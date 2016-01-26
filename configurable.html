@@ -14,23 +14,57 @@
         <h1>Ruler Weather</h1>
       </div>
 
+        <div data-role="fieldcontain">
+          <label for="gps">GPS:</label>
+          <select name="gps" id="gps" data-role="slider">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+          </select>
+        </div>              
+      -If you desactivate de GPS you need to enter a city name bellow:
+                               
+        <br><br><br>
       <div data-role="content">
         <div data-role="fieldcontain">
-          <label for="UTC">Local UTC offset:   </label>
-          <textarea cols="30" rows="8" name="name" id="name"></textarea>
+          <label for="city">City name:</label>
+          <textarea cols="30" rows="8" name="city" id="city"></textarea>
+        </div>   
+        
+        
+
+      <div data-role="content">
+        <div data-role="fieldcontain">
+          <label for="utc">Local UTC offset: (5, -8 ...)  </label>
+          <textarea cols="30" rows="8" name="utc" id="utc"></textarea>
         </div>             
         (Check this on http://localtimes.info/)
+        
         <br><br><br>
         
 
         <div data-role="fieldcontain">
-          <label for="special-feature">Activate special feature:</label>
-          <select name="special-feature" id="special-feature" data-role="slider">
+          <label for="imperial">Imperial units:</label>
+          <select name="imperial" id="imperial" data-role="slider">
             <option value="off">Off</option>
             <option value="on">On</option>
           </select>
-        </div>                                         
-
+        </div>               
+        (Default is Metric)                          
+        <br><br><br>
+  
+      <div data-role="fieldcontain">
+          <label for="vibration">Vibration mode:</label>
+          <select name="vibration" id="vibration" data-role="slider">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+          </select>
+        </div>              
+      (When activated, vibrated every hour from 10am to 10pm)                         
+        <br><br><br>
+        
+        
+        
+        
         <div data-role="fieldcontain">
           <fieldset data-role="controlgroup">
             <legend>Choose as many snacks as you'd like:</legend>
