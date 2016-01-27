@@ -1,32 +1,110 @@
+@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <title>Ruler Watch configuration</title>
   <title>Slate Example Configuration</title>
   <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
   <script src='js/slate.min.js'></script>
   <style>
-  .title {
-    padding: 15px 10px;
-    text-transform: uppercase;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #888888;
-    text-align: center;
-  }
-  </style>
+@@ -18,123 +18,41 @@
   </head>
 
   <body>
+    <h1 class='title'>Ruler Watch configuration2</h1>
     <h1 class='title'>Slate Example Configuration</h1>
 
+<div class="item-container">
+  <div class="item-container-header">Position</div>
+  <div class="item-container-content">
+    <label class="item">
+      Activate GPS ?
+      <input type="checkbox" class="item-toggle" name="toggle-gps" checked>
+    </label>
+    
+    <div class="item-container">
+      <div class="item-container-header"> Your city if no GPS:</div>
+      <div class="item-container-content">
+        <label class="item">
+          <div class="item-input-wrapper">
+            <input type="text" class="item-input" name="input-city" placeholder="Input field">
+          </div>
+        </label>
     <div class='item-container'>
       <div class='item-container-content'>
         <div class='item'>
           Use this configuration page to choose the settings you would like applied to this app.
         </div>
       </div>
+    </div>    
+    
+    <label class="item">
+      UTC time offset
+      <select name="select-utc" dir='rtl' class="item-select">
+            <option class="item-select-option">-9</option>
+            <option class="item-select-option">-8</option>            
+            <option class="item-select-option">-7</option>
+            <option class="item-select-option">-6</option>
+            <option class="item-select-option">-5</option>
+            <option class="item-select-option">-4</option>
+            <option class="item-select-option">-3</option>            
+            <option class="item-select-option">-2</option>            
+            <option class="item-select-option">-1</option>            
+            <option class="item-select-option">-0</option>            
+            <option class="item-select-option" selected>1</option>
+            <option class="item-select-option">2</option>         
+            <option class="item-select-option">3</option>
+            <option class="item-select-option">4</option>
+            <option class="item-select-option">5</option>
+            <option class="item-select-option">6</option>
+            <option class="item-select-option">7</option>            
+            <option class="item-select-option">8</option>            
+            <option class="item-select-option">9</option>            
+            <option class="item-select-option">10</option>            
+            <option class="item-select-option">11</option>
+            <option class="item-select-option">12</option>    
+      </select>
+    </label>    
+    
+  <div class="item-container-footer">
+    You can find this number by visiting <a href="http://www.timeanddate.com/time/map/">this site</a>
+  </div>
+  </div>
+</div>
+
+<div class="item-container">
+  <div class="item-container-header">Units</div>
+  <div class="item-container-content">
+    <label class="item">
+      Imperial
+      <input type="radio" class="item-radio" name="radio-1" value="a">
+    </label>
+    <label class="item">
+      Metric
+      <input type="radio" class="item-radio" name="radio-1" value="b" checked>
+    </label>
+  </div>
+</div>
+
+
+
+<div class="item-container">
+  <div class="item-container-header">Others</div>
+  <div class="item-container-content">
+    <label class="item">
+      Hourly vibrations
+      <input type="checkbox" class="item-toggle" name="toggle-vibration">
+    </label>
+    <div class="item-container-footer">
+      Starts at 10am - Ends at 10pm
     </div>
+    <label class="item">
+      B&W icons
+      <input type="checkbox" class="item-toggle" name="toggle-bw-icons">
+    </label>
+  </div>    
+  </div>
+</div>
 
     <div class='item-container'>
       <div class='item-container-header'>Customizability</div>
@@ -41,12 +119,39 @@
       </div>
     </div>
 
+
+<div class="colors">
+  <div class="item-container-header">Colors</div>
+  <div class="item-container-content">
+     <label class="item">
+      Right backgroud color
+      <input type="text" class="item-color item-color-normal" name="color-right-back" value="#FFFFFF">
+    </label>
+    <label class="item">
+      Left background color
+      <input type="text" class="item-color item-color-sunny" name="color-left-back" value="#FFFFFF">
+    </label>
+    <label class="item">
+      Hours color
+      <input type="text" class="item-color item-color-sunny" name="color-hours" value="#000000">
+    </label>
+    <label class="item">
+      Ruler color
+      <input type="text" class="item-color item-color-sunny" name="color-ruler" value="#000000">
+    </label>
+    <label class="item">
+      Temperatures color
+      <input type="text" class="item-color item-color-sunny" name="color-temperatures" value="#000000">
+    </label>
+  </div>
+</div>
+
     <div class='item-container'>
       <div class='item-container-header'>Accessibility</div>
       <div class='item-container-content'>
         <label class='item'>
           High Contrast Mode
-          <input id='popo' type='checkbox' class='item-toggle'>
+          <input id='high_contrast_checkbox' type='checkbox' class='item-toggle'>
         </label>
       </div>
       <div class='item-container-footer'>
@@ -56,56 +161,48 @@
 
     <div class='item-container'>
       <div class='button-container'>
-        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+@@ -142,17 +60,23 @@
       </div>
     </div>
   </body>
+  
+  
+  
   <script>
   function getConfigData() {
+    var toggle-gps = document.getElementById('toggle-gps');
     var backgroundColorPicker = document.getElementById('background_color_picker');
-    var popo = document.getElementById('popo');
+    var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
  
     var options = {
+      'toggle-gps': toggle-gps.value,
       'background_color': backgroundColorPicker.value,
-      'popo': popo.checked
+      'high_contrast': highContrastCheckbox.checked
     };
 
     // Save for next launch
     localStorage['background_color'] = options['background_color'];
-    localStorage['popo'] = options['popo'];
+    localStorage['high_contrast'] = options['high_contrast'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
+  } 
   }
 
   function getQueryParam(variable, defaultValue) {
     var query = location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split('=');
-      if (pair[0] === variable) {
-        return decodeURIComponent(pair[1]);
-      }
-    }
-    return defaultValue || false;
-  }
- 
-  var submitButton = document.getElementById('submit_button');
-  submitButton.addEventListener('click', function() {
-    console.log('Submit');
-
-    // Set the return URL depending on the runtime environment
-    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+@@ -175,5 +99,15 @@
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
+</script> 
   (function() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
-    var highContrastCheckbox = document.getElementById('popo');
+    var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
 
     // Load any previously saved configuration, if available
     if(localStorage['high_contrast']) {
-      highContrastCheckbox.checked = JSON.parse(localStorage['popo']);
+      highContrastCheckbox.checked = JSON.parse(localStorage['high_contrast']);
       backgroundColorPicker.value = localStorage['background_color'];
     }
   })();
