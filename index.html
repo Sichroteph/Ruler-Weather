@@ -159,7 +159,6 @@
     var radio_units = document.getElementById('radio_units');
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
-    var background_color_picker = document.getElementById('background_color_picker');
 
     var color_right_back = document.getElementById('color_right_back');
     var color_left_back = document.getElementById('color_left_back');
@@ -176,8 +175,6 @@
       'radio_units': radio_units.checked,
       'toggle_vibration': toggle_vibration.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
-
-      'background_color_picker': background_color_picker.value,
 
        'color_right_back': color_right_back.value,
        'color_left_back': color_left_back.value,
@@ -198,8 +195,7 @@
     localStorage['radio_units'] = options['radio_units'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
-    localStorage['background_color_picker'] = options['background_color_picker'];
-
+    
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
@@ -244,7 +240,7 @@
     var radio_units = document.getElementById('radio_units');
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
-    var background_color_picker = document.getElementById('background_color_picker');
+    
     
     var color_right_back = document.getElementById('color_right_back');
     var color_left_back = document.getElementById('color_left_back');
