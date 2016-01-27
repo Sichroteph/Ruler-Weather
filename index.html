@@ -18,14 +18,19 @@
   </head>
 
   <body>
-    <h1 class='title'>Slate Example Configuration12</h1>
+    <h1 class='title'>Slate Example Configuration1ds2</h1>
+
+
+
+
+
 
     <div class='item-container'>
       <div class='item-container-header'>Customizability</div>
       <div class='item-container-content'>
         <label class='item'>
           Background Color
-          <input id='background_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+          <input id='toto' type='text' class='item-color item-color-sunny' value='#000000'>
         </label>
       </div>
       <div class='item-container-footer'>
@@ -52,18 +57,23 @@
       </div>
     </div>
   </body>
+  
+  
+  
+  
+  
   <script>
   function getConfigData() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
+    var toto = document.getElementById('toto');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
  
     var options = {
-      'background_color': backgroundColorPicker.value,
+      'toto': toto.value,
       'high_contrast': highContrastCheckbox.checked
     };
 
     // Save for next launch
-    localStorage['background_color'] = options['background_color'];
+    localStorage['toto'] = options['toto'];
     localStorage['high_contrast'] = options['high_contrast'];
 
     console.log('Got options: ' + JSON.stringify(options));
@@ -92,14 +102,9 @@
   });
 
   (function() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
+    var toto = document.getElementById('toto');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
 
-    // Load any previously saved configuration, if available
-    if(localStorage['high_contrast']) {
-      highContrastCheckbox.checked = JSON.parse(localStorage['high_contrast']);
-      backgroundColorPicker.value = localStorage['background_color'];
-    }
   })();
   </script>
 </html>
