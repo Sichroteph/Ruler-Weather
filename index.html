@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <h1 class='title'>Ruler Widget Configuration 1111</h1>
+    <h1 class='title'>Ruler Widget Configuration 2145</h1>
   
   
   <div class="item-container">
@@ -26,7 +26,7 @@
     <div class="item-container-content">
         <label class='item'>
           High Contrast Mode
-          <input id='togglegps' type='checkbox' class='item-toggle'>
+          <input id='toggle_gps' type='checkbox' class='item-toggle'>
         </label>
       </div>
     </div>   
@@ -72,12 +72,12 @@
   function getConfigData() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
-    var togglegps = document.getElementById('togglegps');
+    var togglegps = document.getElementById('toggle_gps');
 
     var options = {
       'background_color': backgroundColorPicker.value,
       'high_contrast': highContrastCheckbox.checked
-      'togglegps': togglegps.checked
+      'toggle_gps': togglegps.checked
     };
 
     // Save for next launch
