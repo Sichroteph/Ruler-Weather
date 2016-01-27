@@ -25,7 +25,7 @@
   <div class="item-container-content">
     <label class="item">
       Activate GPS ?
-    <input id='toggle-gps' type='checkbox' class='item-toggle'>
+    <input id='toggle_gps' type='checkbox' class='item-toggle'>
     </label>
 
 
@@ -99,18 +99,18 @@
   function getConfigData() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
-    var toggle-gps = document.getElementById('toggle-gps');
+    var togglegps = document.getElementById('toggle_gps');
  
     var options = {
       'background_color': backgroundColorPicker.value,
       'high_contrast': highContrastCheckbox.checked
-      'toggle-gps': highContrastCheckbox.checked
+      'toggle_gps': togglegps.checked
     };
 
     // Save for next launch
     localStorage['background_color'] = options['background_color'];
     localStorage['high_contrast'] = options['high_contrast'];
-    localStorage['toggle-gps'] = options['toggle-gps'];
+    localStorage['toggle_gps'] = options['toggle_gps'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -141,7 +141,6 @@
     var backgroundColorPicker = document.getElementById('background_color_picker');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
     var toggle-gps = document.getElementById('toggle-gps');
-
 
   })();
   </script>
