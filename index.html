@@ -25,17 +25,15 @@
   <div class="item-container-content">
     <label class="item">
       Activate GPS ?
-      <input type="checkbox" class="item-toggle" name="toggle-2" checked>
+      <input type="checkbox" class="item-toggle" name="toggle-gps" checked>
     </label>
-    
-
     
     <div class="item-container">
       <div class="item-container-header"> Your city if no GPS:</div>
       <div class="item-container-content">
         <label class="item">
           <div class="item-input-wrapper">
-            <input type="text" class="item-input" name="input-1" placeholder="Input field">
+            <input type="text" class="item-input" name="input-city" placeholder="Input field">
           </div>
         </label>
       </div>
@@ -43,7 +41,7 @@
     
     <label class="item">
       UTC time offset
-      <select name="select-1" dir='rtl' class="item-select">
+      <select name="select-utc" dir='rtl' class="item-select">
             <option class="item-select-option">-9</option>
             <option class="item-select-option">-8</option>            
             <option class="item-select-option">-7</option>
@@ -80,11 +78,11 @@
   <div class="item-container-content">
     <label class="item">
       Imperial
-      <input type="radio" class="item-radio" name="radio-1" value="a">
+      <input type="radio" class="item-radio" name="radio-imperial" value="a">
     </label>
     <label class="item">
       Metric
-      <input type="radio" class="item-radio" name="radio-1" value="2" checked>
+      <input type="radio" class="item-radio" name="radio-metric" value="2" checked>
     </label>
   </div>
 </div>
@@ -93,8 +91,12 @@
   <div class="item-container-header">Others</div>
   <div class="item-container-content">
     <label class="item">
-      Activate GPS ?
-      <input type="checkbox" class="item-toggle" name="toggle-2" checked>
+      Hourly vibrations
+      <input type="checkbox" class="item-toggle" name="toggle-vibration" checked>
+    </label>
+    <label class="item">
+      B&W icons
+      <input type="checkbox" class="item-toggle" name="toggle-bw-icons">
     </label>
   </div>    
   </div>
@@ -107,28 +109,26 @@
   <div class="item-container-content">
      <label class="item">
       Right backgroud color
-      <input type="text" class="item-color item-color-normal" name="color-1" value="#FFFFFF">
+      <input type="text" class="item-color item-color-normal" name="color-right-back" value="#FFFFFF">
     </label>
     <label class="item">
       Left background color
-      <input type="text" class="item-color item-color-sunny" name="color-2" value="#FFFFFF">
+      <input type="text" class="item-color item-color-sunny" name="color-left-back" value="#FFFFFF">
     </label>
     <label class="item">
       hours color
-      <input type="text" class="item-color item-color-sunny" name="color-2" value="#000000">
+      <input type="text" class="item-color item-color-sunny" name="color-hours" value="#000000">
     </label>
     <label class="item">
       Ruler color
-      <input type="text" class="item-color item-color-sunny" name="color-2" value="#000000">
+      <input type="text" class="item-color item-color-sunny" name="color-ruler" value="#000000">
     </label>
     <label class="item">
       Temperatures color
-      <input type="text" class="item-color item-color-sunny" name="color-2" value="#000000">
+      <input type="text" class="item-color item-color-sunny" name="color-temperatures" value="#000000">
     </label>
   </div>
 </div>
-
-
 
 
     <div class='item-container'>
@@ -139,17 +139,17 @@
   </body>
   <script>
   function getConfigData() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
-    var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
+    var toggle-gps = document.getElementById('toggle-gps');
+
  
     var options = {
-      'background_color': backgroundColorPicker.value,
-      'high_contrast': highContrastCheckbox.checked
+      'toggle-gps': backgroundColorPicker.value,
+  
     };
-
+  <!--  'high_contrast': highContrastCheckbox.checked -->
     // Save for next launch
-    localStorage['background_color'] = options['background_color'];
-    localStorage['high_contrast'] = options['high_contrast'];
+    localStorage['toggle-gps'] = options['toggle-gps'];
+    
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -176,15 +176,5 @@
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
-  (function() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
-    var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
-
-    // Load any previously saved configuration, if available
-    if(localStorage['high_contrast']) {
-      highContrastCheckbox.checked = JSON.parse(localStorage['high_contrast']);
-      backgroundColorPicker.value = localStorage['background_color'];
-    }
-  })();
-  </script> 
+</script> 
 </html>
