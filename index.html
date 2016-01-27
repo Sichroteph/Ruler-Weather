@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <h1 class='title'>Ruler Watch configuration</h1>
+    <h1 class='title'>Ruler Watch configuration2</h1>
 
 <div class="item-container">
   <div class="item-container-header">Position</div>
@@ -142,21 +142,15 @@
       </div>
     </div>
   </body>
+  
+  
+  
   <script>
   function getConfigData() {
     var toggle-gps = document.getElementById('toggle-gps');
-
- 
     var options = {
       'toggle-gps': toggle-gps.value,
-  
     };
-  <!--  'high_contrast': highContrastCheckbox.checked -->
-    // Save for next launch
-    localStorage['toggle-gps'] = options['toggle-gps'];
-    
-
-    console.log('Got options: ' + JSON.stringify(options));
     return options;
   } 
 
