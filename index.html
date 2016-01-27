@@ -23,8 +23,8 @@
 
     <label class='item'>
       Activate GPS ?
-      <input id='Gps' type='checkbox' class='item-toggle'>
-    </label>               
+      <input id='gps' type='checkbox' class='item-toggle'>
+    </label>
 
 
     <div class='item-container'>
@@ -68,13 +68,19 @@
     </div>
   </body>
   <script>
+  
+  
+
   function getConfigData() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
- 
+    var gps = document.getElementById('gps');
+    
+    
     var options = {
       'background_color': backgroundColorPicker.value,
       'high_contrast': highContrastCheckbox.checked
+      'gps': gps.checked
     };
 
     // Save for next launch
