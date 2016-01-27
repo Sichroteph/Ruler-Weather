@@ -64,14 +64,20 @@
       </div>
     </div>
   </body>
+  
+  
+  
+  
   <script>
   function getConfigData() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
- 
+    var togglegps = document.getElementById('toggle_gps');
+
     var options = {
       'background_color': backgroundColorPicker.value,
       'high_contrast': highContrastCheckbox.checked
+      'toggle_gps': togglegps.checked
     };
 
     // Save for next launch
