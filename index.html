@@ -21,17 +21,19 @@
     <h1 class='title'>Ruler Weather</h1>
 
 
-<div class='item-container'>
-  <div class='item-container-header'>Position</div>
+    <div class='item-container'>
+  <div class='item-container-header'>Units</div>
   <div class='item-container-content'>
+
     <label class='item'>
-      Activate GPS ?
+    Activate GPS ?
       <input id='gps' type='checkbox' class='item-toggle' checked>
     </label>
+
+
     
-    <div class='item-container'>
-      <div class='item-container-header'> Your city if no GPS:</div>
-      <div class='item-container-content'>
+    Your city if no GPS:
+
         <label class='item'>
           <div class='item-input-wrapper'>
             <input type='text' class='item-input' input id='input_city' placeholder='Input field'>
@@ -40,15 +42,6 @@
 
 
 
-
-    <div class='item-container'>
-      <div class='button-container'>
-        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
-      </div>
-    </div>
-  </body>
-  
-  
      <label class='item'>
       UTC time offset
       <select input id='select_utc' dir='rtl' class='item-select'>
@@ -73,9 +66,108 @@
             <option class='item-select-option'>9</option>            
             <option class='item-select-option'>10</option>            
             <option class='item-select-option'>11</option>
-            <option class='item-select-option'>12</option>    
+            <option class='item-select-option'>12</option>
       </select>
     </label>
+
+    <div class='item-container-footer'>
+    You can find this number by visiting <a href='http://www.timeanddate.com/time/map/'>this site</a>
+  </div>
+
+    </div>
+</div>
+
+
+<div class='item-container'>
+  <div class='item-container-header'>Units</div>
+  <div class='item-container-content'>
+    <label class='item'>
+      Imperial
+      <input type='radio' class='item-radio'  name = 'radio1' input id='radio_units' value='a'>
+    </label>
+    <label class='item'>
+      Metric
+      <input type='radio' class='item-radio'  name= 'radio1' input id='radio_units' value='b' checked>
+    </label>
+  </div>
+</div>
+
+
+<div class='item-container'>
+  <div class='item-container-header'>Others</div>
+  <div class='item-container-content'>
+    <label class='item'>
+      Hourly vibrations
+      <input type='checkbox' class='item-toggle' input id='toggle_vibration'>
+    </label>
+    <div class='item-container-footer'>
+      Starts at 10am - Ends at 10pm
+    </div>
+    <label class='item'>
+      B&W icons
+      <input type='checkbox' class='item-toggle'  input id='toggle_bw_icons'>
+    </label>
+        <div class='item-container-footer'>
+    (Only applies to Pebble Time)
+  </div>
+  </div>    
+  </div>
+</div>
+
+
+
+
+      <div class='item-container'>
+      <div class='item-container-header'>Customizability</div>
+      <div class='item-container-content'>
+        <label class='item'>
+          Background Color
+          <input id='background_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+        </label>
+      </div>
+
+    </div>
+
+
+
+
+<div class='colors'>
+  <div class='item-container-header'>Colors</div>
+  <div class='item-container-content'>
+     <label class='item'>
+      Right backgroud color
+      <input type='text' class='item-color item-color-normal' input id='color_right_back' value='#FFFFFF'>
+    </label>
+    <label class='item'>
+      Left background color
+      <input type='text' class='item-color item-color-sunny' input id='color_left_back' value='#FFFFFF'>
+    </label>
+    <label class='item'>
+      Hours color
+      <input type='text' class='item-color item-color-sunny' input id='color_hours' value='#000000'>
+    </label>
+    <label class='item'>
+      Ruler color
+      <input type='text' class='item-color item-color-sunny' input id='color_ruler' value='#000000'>
+    </label>
+    <label class='item'>
+      Temperatures color
+      <input type='text' class='item-color item-color-sunny' input id='color_temperatures' value='#000000'>
+    </label>
+  </div>
+</div>
+
+
+
+    <div class='item-container'>
+      <div class='button-container'>
+        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+      </div>
+    </div>
+  </body>
+
+
+
 
 
 
@@ -89,11 +181,37 @@
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
-    
+    var radio_units = document.getElementById('radio_units');
+    var toggle_vibration = document.getElementById('toggle_vibration');
+    var toggle_bw_icons = document.getElementById('toggle_bw_icons');
+    var background_color_picker = document.getElementById('background_color_picker');
+
+    var color_right_back = document.getElementById('color_right_back');
+    var color_left_back = document.getElementById('color_left_back');
+    var color_hours = document.getElementById('color_hours');
+    var color_ruler = document.getElementById('color_ruler');
+    var color_temperatures = document.getElementById('color_temperatures');
+
+
+
     var options = {
       'gps': gps.checked,
       'input_city': input_city.value,
       'select_utc': select_utc.value,
+      'radio_units': radio_units.value,
+      'color_ruler': color_ruler.checked,
+      'toggle_bw_icons': toggle_bw_icons.checked,
+
+      'background_color_picker': background_color_picker.value,
+
+       'color_right_back': color_right_back.value,
+       'color_left_back': color_left_back.value,
+       'color_hours': color_hours.value,
+       'color_ruler': color_ruler.value,
+       'color_temperatures': color_temperatures.value,
+
+
+
 
     };
 
@@ -104,6 +222,17 @@
 
     localStorage['gps'] = options['gps'];
     localStorage['input_city'] = options['input_city'];
+    localStorage['select_utc'] = options['select_utc'];
+    localStorage['radio_units'] = options['radio_units'];
+    localStorage['toggle_vibration'] = options['toggle_vibration'];
+    localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
+    localStorage['background_color_picker'] = options['background_color_picker'];
+
+    localStorage['color_right_back'] = options['color_right_back'];
+    localStorage['color_left_back'] = options['color_left_back'];
+    localStorage['color_hours'] = options['color_hours'];
+    localStorage['color_ruler'] = options['color_ruler'];
+    localStorage['color_temperatures'] = options['color_temperatures'];
 
 
 
@@ -136,9 +265,20 @@
   
 
 
-    var gps = document.getElementById('gps');
-     var input_city = document.getElementById('input_city');
 
+    var gps = document.getElementById('gps');
+    var input_city = document.getElementById('input_city');
+    var select_utc = document.getElementById('select_utc');
+    var radio_units = document.getElementById('radio_units');
+    var toggle_vibration = document.getElementById('toggle_vibration');
+    var toggle_bw_icons = document.getElementById('toggle_bw_icons');
+    var background_color_picker = document.getElementById('background_color_picker');
+    
+    var color_right_back = document.getElementById('color_right_back');
+    var color_left_back = document.getElementById('color_left_back');
+    var color_hours = document.getElementById('color_hours');
+    var color_ruler = document.getElementById('color_ruler');
+    var color_temperatures = document.getElementById('color_temperatures');
 
 
   })();
