@@ -18,9 +18,21 @@
   </head>
 
   <body>
-    <h1 class='title'>Slate Example Configuration1ds2</h1>
+    <h1 class='title'>Slate Example Configuration1dssd2</h1>
 
 
+    <div class='item-container'>
+      <div class='item-container-header'>Accessibility</div>
+      <div class='item-container-content'>
+        <label class='item'>
+            AAAAAAAH  
+          <input id='popo' type='checkbox' class='item-toggle'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        This switches the app colors to a higher contrast set that promotes readability in low light.
+      </div>
+    </div>
 
 
 
@@ -65,16 +77,19 @@
   <script>
   function getConfigData() {
     var toto = document.getElementById('toto');
+    var popo = document.getElementById('popo');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
  
     var options = {
       'toto': toto.value,
       'high_contrast': highContrastCheckbox.checked
+      'popo': popo.checked
     };
 
     // Save for next launch
     localStorage['toto'] = options['toto'];
     localStorage['high_contrast'] = options['high_contrast'];
+    localStorage['popo'] = options['popo'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -104,7 +119,7 @@
   (function() {
     var toto = document.getElementById('toto');
     var highContrastCheckbox = document.getElementById('high_contrast_checkbox');
-
+    var popo = document.getElementById('popo');
   })();
   </script>
 </html>
