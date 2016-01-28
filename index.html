@@ -27,7 +27,7 @@
 
     <label class='item'>
     GPS
-      <input id='gps' type='checkbox' class='item-toggle' gps>
+      <input id='gps' type='checkbox' class='item-toggle' true>
     </label>
 
 
@@ -36,10 +36,9 @@
 
         <label class='item'>
           <div class='item-input-wrapper'>
-            <input type='text' class='item-input' input id='input_city' placeholder='Input field' input_city>
+            <input type='text' class='item-input' input id='input_city' placeholder='Input field')>
           </div>
         </label>
-
 
 
      <label class='item'>
@@ -53,7 +52,7 @@
             <option class='item-select-option'>-4</option>
             <option class='item-select-option'>-3</option>            
             <option class='item-select-option'>-2</option>            
-            <option class='item-select-option'>-1</option>            
+            <option class='item-select-option'>-1</option>
             <option class='item-select-option'>-0</option>            
             <option class='item-select-option' selected>1</option>
             <option class='item-select-option'>2</option>         
@@ -152,6 +151,7 @@
 
 
   <script>
+
   function getConfigData() {
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
@@ -185,10 +185,6 @@
     };
 
     // Save for next launch
-    
-    
-
-
     localStorage['gps'] = options['gps'];
     localStorage['input_city'] = options['input_city'];
     localStorage['select_utc'] = options['select_utc'];
@@ -230,24 +226,30 @@
   });
 
   (function() {
-  
-
-
-
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
-    var radio_units = document.getElementById('radio_units');
+    var radio_units = document.getElementById('radio_units');                   
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
-    
-    
     var color_right_back = document.getElementById('color_right_back');
     var color_left_back = document.getElementById('color_left_back');
     var color_hours = document.getElementById('color_hours');
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
 
+    gps.checked = JSON.parse(localStorage['gps']);
+    input_city.value =  localStorage['input_city'];
+    select_utc.value =  JSON.parse(localStorage['select_utc']);
+    radio_units.checked =  JSON.parse(localStorage['radio_units']);
+    toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
+    toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
+    
+    color_right_back.value =  localStorage['color_right_back'];
+    color_left_back.value =  localStorage['color_left_back'];
+    color_hours.value =  localStorage['color_hours'];
+    color_ruler.value =  localStorage['color_ruler'];
+    color_temperatures.value =  localStorage['color_temperatures'];
 
   })();
   </script>
