@@ -154,6 +154,10 @@
       Temperatures color
       <input type='text' class='item-color item-color-sunny' input id='color_temperatures' value='0xFFFFFF'>
     </label>
+    <label class='item'>
+      Central line color
+    <input type='text' class='item-color item-color-sunny' input id='color_line' value='0xFFFFFF'>
+    </label>
   </div>
 </div>
 
@@ -183,7 +187,7 @@
     var color_hours = document.getElementById('color_hours');
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
-
+    var color_line = document.getElementById('color_line');
 
 
     var options = {
@@ -202,6 +206,7 @@
        'color_hours': color_hours.value,
        'color_ruler': color_ruler.value,
        'color_temperatures': color_temperatures.value,
+       'color_line': color_line.value,
 
     };
 
@@ -219,7 +224,7 @@
     localStorage['color_hours'] = options['color_hours'];
     localStorage['color_ruler'] = options['color_ruler'];
     localStorage['color_temperatures'] = options['color_temperatures'];
-
+    localStorage['color_line'] = options['color_line'];
 
 
     console.log('Got options: ' + JSON.stringify(options));
@@ -260,6 +265,7 @@
     var color_hours = document.getElementById('color_hours');
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
+    var color_line = document.getElementById('color_line');
 
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
@@ -274,6 +280,7 @@
     color_hours.value =  localStorage['color_hours'];
     color_ruler.value =  localStorage['color_ruler'];
     color_temperatures.value =  localStorage['color_temperatures'];
+    color_line.value =  localStorage['color_line'];
 
   })();
   </script>
