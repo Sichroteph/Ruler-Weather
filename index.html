@@ -139,13 +139,18 @@
   <div class='item-container-header'>Weather 12H forecast graph</div>
   <div class='item-container-content'>
      <label class='item'>
-      Second screen activation
+      Second screen mode
       <select input id='select_screen' dir='rtl' class='item-select'>
-            <option class='item-select-option'>Desactivated</option>
-            <option class='item-select-option' selected>Activated (One shake to show)</option>
-            <option class='item-select-option'>Two quick shakes to show</option>
+            <option class='item-select-option'>1</option>
+            <option class='item-select-option' selected>3</option>
+            <option class='item-select-option'>3</option>
       </select>
     </label>
+    <div class='item-container-footer'>
+   Mode 1: Desactivated  <br>
+   Mode 2: One shake to show <br>
+   Mode 3: Two shakes to show
+  </div>
     </div>
 </div>
 
@@ -247,7 +252,7 @@
     localStorage['toggle_vibration'] = options['toggle_vibration'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
      localStorage['toggle_gradiant'] = options['toggle_gradiant'];
-    
+
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
