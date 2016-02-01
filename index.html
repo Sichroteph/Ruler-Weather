@@ -135,6 +135,23 @@
 
 
 
+    <div class='item-container'>
+  <div class='item-container-header'>Weather 12H forecast graph</div>
+  <div class='item-container-content'>
+     <label class='item'>
+      Second screen activation
+      <select input id='select_screen' dir='rtl' class='item-select'>
+            <option class='item-select-option'>Desactivated</option>
+            <option class='item-select-option' selected>Activated (One shake to show)</option>
+            <option class='item-select-option'>Two quick shakes to show</option>
+      </select>
+    </label>
+    </div>
+</div>
+
+
+
+
 <div class='colors'>
   <div class='item-container-header'>Colors (Does not apply to OG Pebble)</div>
   <div class='item-container-content'>
@@ -181,8 +198,11 @@
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
+    var select_screen = document.getElementById('select_screen');
+
     var radio_units = document.getElementById('radio_units');
     var radio_refresh = document.getElementById('radio_refresh');
+
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
@@ -198,9 +218,11 @@
       'gps': gps.checked,
       'input_city': input_city.value,
       'select_utc': select_utc.value,
+      'select_screen': select_screen.value,
       'radio_units': radio_units.checked,
       
       'radio_refresh': radio_refresh.checked,
+      'radio_screen': radio_refresh,
 
       'toggle_vibration': toggle_vibration.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
@@ -219,6 +241,7 @@
     localStorage['gps'] = options['gps'];
     localStorage['input_city'] = options['input_city'];
     localStorage['select_utc'] = options['select_utc'];
+    localStorage['select_screen'] = options['select_screen'];
     localStorage['radio_units'] = options['radio_units'];
     localStorage['radio_refresh'] = options['radio_refresh'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
@@ -262,6 +285,7 @@
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
+    var select_screen = document.getElementById('select_screen');
     var radio_units = document.getElementById('radio_units');
     var radio_refresh = document.getElementById('radio_refresh');
     var toggle_vibration = document.getElementById('toggle_vibration');
@@ -277,6 +301,7 @@
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
+    select_screen.value =  JSON.parse(localStorage['select_screen']);
     radio_units.checked =  JSON.parse(localStorage['radio_units']);
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
