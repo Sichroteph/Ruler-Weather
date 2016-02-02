@@ -342,7 +342,7 @@
     color_ruler.value =  localStorage['color_ruler'];
     color_temperatures.value =  localStorage['color_temperatures'];
     color_line.value =  localStorage['color_line'];
-    if(localStorage.getItem("color_2nd_back") !== null){
+    if((localStorage.getItem("color_2nd_back") !== null)||(localStorage['color_2nd_back']!='undefined')){
     color_2nd_back.value =  localStorage['color_2nd_back'];}
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
     console.log(color_2nd_back.value)    ;
