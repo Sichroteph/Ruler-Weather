@@ -322,10 +322,7 @@
     var color_temperatures = document.getElementById('color_temperatures');
     var color_line = document.getElementById('color_line');
 
-
-
-
-          
+        
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
@@ -345,6 +342,7 @@
     var color_2nd_back = document.getElementById('color_2nd_back');
     color_2nd_back.value =  localStorage['color_2nd_back'];
     }
+
     if (localStorage['color_2nd_temp'] !== 'undefined'){
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
