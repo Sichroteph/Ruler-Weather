@@ -162,28 +162,28 @@
   <div class='item-container-content'>
      <label class='item'>
       Temperatures - Background color
-      <input type='text' class='item-color item-color-sunny' input id='color_left_back' value='0x000000'>
+      <input type='text' class='item-color item-color-normal' input id='color_left_back' value='0x000000'>
     </label>
     <label class='item'>
       Temperatures color
-      <input type='text' class='item-color item-color-sunny' input id='color_temperatures' value='0xFFFFFF'>
+      <input type='text' class='item-color item-color-normal' input id='color_temperatures' value='0xFFFFFF'>
     </label>
      <label class='item'>
       Hours - Background color
-      <input type='text' class='item-color item-color-sunny' input id='color_right_back' value='0x000000'>
+      <input type='text' class='item-color item-color-normal' input id='color_right_back' value='0x000000'>
     </label>
     <label class='item'>
       Hours color
-      <input type='text' class='item-color item-color-sunny' input id='color_hours' value='0xFFFFFF'>
+      <input type='text' class='item-color item-color-normal' input id='color_hours' value='0xFFFFFF'>
     </label>
     <label class='item'>
       Ruler color
-      <input type='text' class='item-color item-color-sunny' input id='color_ruler' value='0xFFFFFF'>
+      <input type='text' class='item-color item-color-normal' input id='color_ruler' value='0xFFFFFF'>
     </label>
 
     <label class='item'>
       Central line color
-    <input type='text' class='item-color item-color-sunny' input id='color_line' value='0xFFFFFF'>
+    <input type='text' class='item-color item-color-normal' input id='color_line' value='0xFFFFFF'>
     </label>
   </div>
 </div>
@@ -193,11 +193,11 @@
   <div class='item-container-content'>
     <label class='item'>
       Background color
-      <input type='text' class='item-color item-color-sunny' input id='color_2nd_back' value='0x000000'>
+      <input type='text' class='item-color item-color-normal' input id='color_2nd_back' value='0x000000'>
     </label>
     <label class='item'>
       Text color
-      <input type='text' class='item-color item-color-sunny' input id='color_2nd_temp' value='0xFFFFFF'>
+      <input type='text' class='item-color item-color-normal' input id='color_2nd_temp' value='0xFFFFFF'>
     </label>
     </div>
 </div>
@@ -322,7 +322,7 @@
     var color_temperatures = document.getElementById('color_temperatures');
     var color_line = document.getElementById('color_line');
 
-        
+
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
