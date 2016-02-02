@@ -232,7 +232,7 @@
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
     var color_line = document.getElementById('color_line');
-    if(localStorage['color_2nd_back']!==null){
+    if(localStorage['color_2nd_back']!==NULL){
     var color_2nd_back = document.getElementById('color_2nd_back');   }
     var color_2nd_temp = document.getElementById('color_2nd_temp');
 
@@ -343,8 +343,8 @@
     color_ruler.value =  localStorage['color_ruler'];
     color_temperatures.value =  localStorage['color_temperatures'];
     color_line.value =  localStorage['color_line'];
-    console.log(localStorage['color_2nd_back'])    ;     
-    color_2nd_back.value =  localStorage['color_2nd_back'];
+    if(localStorage.getItem("color_2nd_back") !== null){
+    color_2nd_back.value =  localStorage['color_2nd_back'];}
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
 
   })();
