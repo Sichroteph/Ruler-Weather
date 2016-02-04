@@ -113,6 +113,10 @@
   <div class='item-container-footer'>
    Does not apply to Pebble round
   </div>
+    <label class='item'>
+      Larger ruler
+      <input type='checkbox' class='item-toggle'  input id='toggle_ruler_large'>
+    </label>
 
   </div>
   </div>
@@ -235,7 +239,7 @@
     var color_line = document.getElementById('color_line');
     var color_2nd_back = document.getElementById('color_2nd_back');
     var color_2nd_temp = document.getElementById('color_2nd_temp');
-
+    var toggle_ruler_large = document.getElementById('toggle_ruler_large');
 
     var options = {
       'gps': gps.checked,
@@ -259,6 +263,8 @@
        'color_line': color_line.value,
        'color_2nd_back': color_2nd_back.value,
        'color_2nd_temp': color_2nd_temp.value,
+       'toggle_ruler_large': toggle_ruler_large.checked,
+      
     };
 
     // Save for next launch
@@ -280,7 +286,7 @@
     localStorage['color_line'] = options['color_line'];
     localStorage['color_2nd_back'] = options['color_2nd_back'];
     localStorage['color_2nd_temp'] = options['color_2nd_temp'];
-
+    localStorage['toggle_ruler_large'] = options['toggle_ruler_large'];
     console.log('Got options: ' + JSON.stringify(options));
     return options;
   }
@@ -324,7 +330,8 @@
     var color_line = document.getElementById('color_line');
     var color_2nd_back = document.getElementById('color_2nd_back');
     var color_2nd_temp = document.getElementById('color_2nd_temp');
-
+    var toggle_ruler_large = document.getElementById('toggle_ruler_large');
+    
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
@@ -342,6 +349,7 @@
     color_line.value =  localStorage['color_line'];
     color_2nd_back.value =  localStorage['color_2nd_back'];
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
+    toggle_ruler_large.checked =  JSON.parse(localStorage['toggle_ruler_large']);
   
                             
 
