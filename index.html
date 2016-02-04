@@ -120,7 +120,7 @@
     
     <label class='item'>
       Hours numbers centered on the middle ?
-      <input type='checkbox' class='item-toggle'  input id='toggle_ruler_large' checked>
+      <input type='checkbox' class='item-toggle'  input id='toggle_centered' checked>
     </label>
       <div class='item-container-footer'>
    By default, the hours are centered on the begining
@@ -246,6 +246,8 @@
     var color_2nd_back = document.getElementById('color_2nd_back');
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
+    var toggle_centered = document.getElementById('toggle_centered');
+
 
     var options = {
       'gps': gps.checked,
@@ -270,6 +272,7 @@
        'color_2nd_back': color_2nd_back.value,
        'color_2nd_temp': color_2nd_temp.value,
        'toggle_ruler_large': toggle_ruler_large.checked,
+       'toggle_centered': toggle_centered.checked,
       
     };
 
@@ -282,8 +285,8 @@
     localStorage['radio_refresh'] = options['radio_refresh'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
-     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
-
+    localStorage['toggle_gradiant'] = options['toggle_gradiant'];
+    localStorage['toggle_centered'] = options['toggle_centered'];
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
@@ -337,12 +340,14 @@
     var color_2nd_back = document.getElementById('color_2nd_back');
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
+    var toggle_centered = document.getElementById('toggle_centered');
     
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
     select_screen.value =  JSON.parse(localStorage['select_screen']);
     radio_units.checked =  JSON.parse(localStorage['radio_units']);
+    toggle_centered.checked =  JSON.parse(localStorage['toggle_centered']);
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
