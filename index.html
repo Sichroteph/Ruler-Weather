@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Slate Example Configuration</title>
+  <title>Ruler Weather</title>
   <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
   <script src='js/slate.min.js'></script>
   <style>
@@ -27,19 +28,14 @@
 
     <label class='item'>
     GPS
-      <input id='gps' type='checkbox' class='item-toggle' checked>
+      <input id='gps' type='checkbox' class='item-toggle' true>
     </label>
-
-
-    
     Your city if no GPS:
-
         <label class='item'>
           <div class='item-input-wrapper'>
-            <input type='text' class='item-input' input id='input_city' placeholder='Input field'>
+            <input type='text' class='item-input' input id='input_city' placeholder='Input field')>
           </div>
         </label>
-
 
 
      <label class='item'>
@@ -53,7 +49,7 @@
             <option class='item-select-option'>-4</option>
             <option class='item-select-option'>-3</option>            
             <option class='item-select-option'>-2</option>            
-            <option class='item-select-option'>-1</option>            
+            <option class='item-select-option'>-1</option>
             <option class='item-select-option'>-0</option>            
             <option class='item-select-option' selected>1</option>
             <option class='item-select-option'>2</option>         
@@ -104,62 +100,107 @@
       Starts at 10am - Ends at 10pm
     </div>
     <label class='item'>
-      B&W icons
+      White icons
       <input type='checkbox' class='item-toggle'  input id='toggle_bw_icons'>
     </label>
-        <div class='item-container-footer'>
-    (Only applies to Pebble Time)
+  <div class='item-container-footer'>
+    Only applies to Pebble Time.
   </div>
-    <label class='item'>
-      Larger ruler
-      <input type='checkbox' class='item-toggle'  input id='toggle_ruler_large'>
+      <label class='item'>
+    Gradiant
+      <input type='checkbox' class='item-toggle'  input id='toggle_gradiant'>
     </label>
+  <div class='item-container-footer'>
+   Does not apply to Pebble round
+  </div>
 
   </div>
   </div>
 </div>
 
 
+<div class='item-container'>
+  <div class='item-container-header'>Weather update</div>
+  <div class='item-container-content'>
+    <label class='item'>
+      30 mn
+      <input type='radio' class='item-radio'  name = 'radio2' input id='radio_refresh' value='a' >
+    </label>
+    <label class='item'>
+      60 mn
+      <input type='radio' class='item-radio'  name= 'radio2' input id='radio_refresh' value='b' checked>
+    </label>
+  </div>
+</div>
 
 
-      <div class='item-container'>
-      <div class='item-container-header'>Customizability</div>
-      <div class='item-container-content'>
-        <label class='item'>
-          Background Color
-          <input id='background_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
-        </label>
-      </div>
 
+
+    <div class='item-container'>
+  <div class='item-container-header'>Weather 12H forecast graph</div>
+  <div class='item-container-content'>
+     <label class='item'>
+      Second screen mode
+      <select input id='select_screen' dir='rtl' class='item-select'>
+            <option class='item-select-option'>1</option>
+            <option class='item-select-option' selected>2</option>
+            <option class='item-select-option'>3</option>
+      </select>
+    </label>
+    <div class='item-container-footer'>
+   Mode 1: Desactivated  <br>
+   Mode 2: One shake to show <br>
+   Mode 3: Two shakes to show
+  </div>
     </div>
+</div>
 
 
 
 
 <div class='colors'>
-  <div class='item-container-header'>Colors</div>
+  <div class='item-container-header'>Main screen (Does not apply to OG Pebble)</div>
   <div class='item-container-content'>
      <label class='item'>
-      Right backgroud color
-      <input type='text' class='item-color item-color-normal' input id='color_right_back' value='#FFFFFF'>
-    </label>
-    <label class='item'>
-      Left background color
-      <input type='text' class='item-color item-color-sunny' input id='color_left_back' value='#FFFFFF'>
-    </label>
-    <label class='item'>
-      Hours color
-      <input type='text' class='item-color item-color-sunny' input id='color_hours' value='#000000'>
-    </label>
-    <label class='item'>
-      Ruler color
-      <input type='text' class='item-color item-color-sunny' input id='color_ruler' value='#000000'>
+      Temperatures - Background color
+      <input type='text' class='item-color item-color-normal' input id='color_left_back' value='0x000000'>
     </label>
     <label class='item'>
       Temperatures color
-      <input type='text' class='item-color item-color-sunny' input id='color_temperatures' value='#000000'>
+      <input type='text' class='item-color item-color-normal' input id='color_temperatures' value='0xFFFFFF'>
+    </label>
+     <label class='item'>
+      Hours - Background color
+      <input type='text' class='item-color item-color-normal' input id='color_right_back' value='0x000000'>
+    </label>
+    <label class='item'>
+      Hours color
+      <input type='text' class='item-color item-color-normal' input id='color_hours' value='0xFFFFFF'>
+    </label>
+    <label class='item'>
+      Ruler color
+      <input type='text' class='item-color item-color-normal' input id='color_ruler' value='0xFFFFFF'>
+    </label>
+
+    <label class='item'>
+      Central line color
+    <input type='text' class='item-color item-color-normal' input id='color_line' value='0xFFFFFF'>
     </label>
   </div>
+</div>
+
+<div class='colors'>
+  <div class='item-container-header'>Second screen (Does not apply to OG Pebble)</div>
+  <div class='item-container-content'>
+    <label class='item'>
+      Background color
+      <input type='text' class='item-color item-color-normal' input id='color_2nd_back' value='0x000000'>
+    </label>
+    <label class='item'>
+      Text color
+      <input type='text' class='item-color item-color-normal' input id='color_2nd_temp' value='0xFFFFFF'>
+    </label>
+    </div>
 </div>
 
 
@@ -173,63 +214,72 @@
 
 
   <script>
+
   function getConfigData() {
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
+    var select_screen = document.getElementById('select_screen');
+
     var radio_units = document.getElementById('radio_units');
+    var radio_refresh = document.getElementById('radio_refresh');
+
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
-    var background_color_picker = document.getElementById('background_color_picker');
-
+    var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
     var color_left_back = document.getElementById('color_left_back');
     var color_hours = document.getElementById('color_hours');
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
-    var toggle_ruler_large = document.getElementById('toggle_ruler_large');
-
+    var color_line = document.getElementById('color_line');
+    var color_2nd_back = document.getElementById('color_2nd_back');
+    var color_2nd_temp = document.getElementById('color_2nd_temp');
 
 
     var options = {
       'gps': gps.checked,
       'input_city': input_city.value,
       'select_utc': select_utc.value,
-      'radio_units': radio_units.value,
-      'color_ruler': color_ruler.checked,
-      'toggle_bw_icons': toggle_bw_icons.checked,
+      'select_screen': select_screen.value,
+      'radio_units': radio_units.checked,
+      
+      'radio_refresh': radio_refresh.checked,
+      'radio_screen': radio_refresh,
 
-      'background_color_picker': background_color_picker.value,
+      'toggle_vibration': toggle_vibration.checked,
+      'toggle_bw_icons': toggle_bw_icons.checked,
+      'toggle_gradiant': toggle_gradiant.checked,
 
        'color_right_back': color_right_back.value,
        'color_left_back': color_left_back.value,
        'color_hours': color_hours.value,
        'color_ruler': color_ruler.value,
        'color_temperatures': color_temperatures.value,
-       'toggle_ruler_large': toggle_ruler_large.checked,
-
+       'color_line': color_line.value,
+       'color_2nd_back': color_2nd_back.value,
+       'color_2nd_temp': color_2nd_temp.value,
     };
 
     // Save for next launch
-    
-    
-
-
     localStorage['gps'] = options['gps'];
     localStorage['input_city'] = options['input_city'];
     localStorage['select_utc'] = options['select_utc'];
+    localStorage['select_screen'] = options['select_screen'];
     localStorage['radio_units'] = options['radio_units'];
+    localStorage['radio_refresh'] = options['radio_refresh'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
-    localStorage['background_color_picker'] = options['background_color_picker'];
+     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
 
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
     localStorage['color_ruler'] = options['color_ruler'];
     localStorage['color_temperatures'] = options['color_temperatures'];
-    localStorage['toggle_ruler_large'] = options['toggle_ruler_large'];
-
+    localStorage['color_line'] = options['color_line'];
+    localStorage['color_2nd_back'] = options['color_2nd_back'];
+    localStorage['color_2nd_temp'] = options['color_2nd_temp'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -257,20 +307,43 @@
   });
 
   (function() {
-
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
+    var select_screen = document.getElementById('select_screen');
     var radio_units = document.getElementById('radio_units');
+    var radio_refresh = document.getElementById('radio_refresh');
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
-    var background_color_picker = document.getElementById('background_color_picker');
+    var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
     var color_left_back = document.getElementById('color_left_back');
     var color_hours = document.getElementById('color_hours');
     var color_ruler = document.getElementById('color_ruler');
     var color_temperatures = document.getElementById('color_temperatures');
-    var toggle_ruler_large = document.getElementById('toggle_ruler_large');
+    var color_line = document.getElementById('color_line');
+    var color_2nd_back = document.getElementById('color_2nd_back');
+    var color_2nd_temp = document.getElementById('color_2nd_temp');
+
+    gps.checked = JSON.parse(localStorage['gps']);
+    input_city.value =  localStorage['input_city'];
+    select_utc.value =  JSON.parse(localStorage['select_utc']);
+    select_screen.value =  JSON.parse(localStorage['select_screen']);
+    radio_units.checked =  JSON.parse(localStorage['radio_units']);
+    radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
+    toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
+    toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
+    toggle_gradiant.checked =  JSON.parse(localStorage['toggle_gradiant']);
+    color_right_back.value =  localStorage['color_right_back'];
+    color_left_back.value =  localStorage['color_left_back'];
+    color_hours.value =  localStorage['color_hours'];
+    color_ruler.value =  localStorage['color_ruler'];
+    color_temperatures.value =  localStorage['color_temperatures'];
+    color_line.value =  localStorage['color_line'];
+    color_2nd_back.value =  localStorage['color_2nd_back'];
+    color_2nd_temp.value =  localStorage['color_2nd_temp'];
+  
+                            
 
   })();
   </script>
