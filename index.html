@@ -323,9 +323,6 @@
   var submitButton = document.getElementById('submit_button');
   submitButton.addEventListener('click', function() {
     function getConfigData() {
-    window.onerror = function(error) {
-    alert(error);
-};
     console.log('Submit');
 
     // Set the return URL depending on the runtime environment
@@ -333,11 +330,7 @@
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
-  (function() {
-    function getConfigData() {
-    window.onerror = function(error) {
-    alert(error);
-};
+
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
@@ -357,7 +350,7 @@
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
-    
+
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
@@ -377,8 +370,8 @@
     color_2nd_back.value =  localStorage['color_2nd_back'];
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
     toggle_ruler_large.checked =  JSON.parse(localStorage['toggle_ruler_large']);
-  
-                            
+
+
 
   })();
   </script>
