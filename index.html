@@ -224,8 +224,12 @@
 
 
   <script>
+  window.onerror = function(error) {
+    alert(error);
+};
 
   function getConfigData() {
+
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
@@ -257,7 +261,7 @@
       'radio_units': radio_units.checked,
       
       'radio_refresh': radio_refresh.checked,
-      'radio_screen': radio_refresh,
+      'radio_screen': radio_refresh.checked,
 
       'toggle_vibration': toggle_vibration.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
