@@ -225,8 +225,7 @@
 
   <script>
 
-
-
+  function getConfigData() {
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
@@ -267,7 +266,7 @@
        'color_right_back': color_right_back.value,
        'color_left_back': color_left_back.value,
        'color_hours': color_hours.value,
-       'color_ruler': color_ruler.value,                 
+       'color_ruler': color_ruler.value,
        'color_temperatures': color_temperatures.value,
        'color_line': color_line.value,
        'color_2nd_back': color_2nd_back.value,
@@ -301,7 +300,7 @@
     return options;
   }
 
-
+  function getQueryParam(variable, defaultValue) {
     var query = location.search.substring(1);
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
@@ -315,15 +314,14 @@
  
   var submitButton = document.getElementById('submit_button');
   submitButton.addEventListener('click', function() {
-    function getConfigData() {
     console.log('Submit');
 
     // Set the return URL depending on the runtime environment
-    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    var return_to = getQueryParam('return_to', 'pebblejs://close#success');
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
-
+  (function() {
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
@@ -343,7 +341,7 @@
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
-
+    
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
@@ -363,8 +361,8 @@
     color_2nd_back.value =  localStorage['color_2nd_back'];
     color_2nd_temp.value =  localStorage['color_2nd_temp'];
     toggle_ruler_large.checked =  JSON.parse(localStorage['toggle_ruler_large']);
-
-
+  
+                            
 
   })();
   </script>
