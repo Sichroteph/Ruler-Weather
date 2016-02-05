@@ -226,6 +226,10 @@
   <script>
 
   function getConfigData() {
+    window.onerror = function(error) {
+    alert(error);
+};
+
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
@@ -266,7 +270,7 @@
        'color_right_back': color_right_back.value,
        'color_left_back': color_left_back.value,
        'color_hours': color_hours.value,
-       'color_ruler': color_ruler.value,
+       'color_ruler': color_ruler.value,                 
        'color_temperatures': color_temperatures.value,
        'color_line': color_line.value,
        'color_2nd_back': color_2nd_back.value,
@@ -301,6 +305,10 @@
   }
 
   function getQueryParam(variable, defaultValue) {
+    function getConfigData() {
+    window.onerror = function(error) {
+    alert(error);
+};
     var query = location.search.substring(1);
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
@@ -314,6 +322,10 @@
  
   var submitButton = document.getElementById('submit_button');
   submitButton.addEventListener('click', function() {
+    function getConfigData() {
+    window.onerror = function(error) {
+    alert(error);
+};
     console.log('Submit');
 
     // Set the return URL depending on the runtime environment
@@ -322,6 +334,10 @@
   });
 
   (function() {
+    function getConfigData() {
+    window.onerror = function(error) {
+    alert(error);
+};
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
     var select_utc = document.getElementById('select_utc');
