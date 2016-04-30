@@ -36,7 +36,25 @@
             <input type='text' class='item-input' input id='input_city' placeholder='Input field'>
           </div>
         </label>
+              <label class='item'>
+Your weather provider choice:
+      <select input id='select_provider' dir='rtl' class='item-select'>
+            <option class='item-select-option'selected>1</option>
+            <option class='item-select-option'>2</option>
+               </select>
+    </label>
+                            <div class='item-container-footer'>
+      Choice 1 : Open weather map -- Choice 2 : Weather underground (free API needed)
+    </div>
 
+        Your weather underground API key :
+        <label class='item'>
+          <div class='item-input-wrapper'>
+            <input type='text' class='item-input' input id='input_api' placeholder='Input field'>
+          </div>
+        </label>
+    
+    
 
         <div style="display:none;">
      <label class='item'>
@@ -288,8 +306,10 @@
 
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
+       var input_api = document.getElementById('input_api');
     var select_utc = document.getElementById('select_utc');
     var select_goal = document.getElementById('select_goal');
+    var select_provider = document.getElementById('select_provider');
     var select_screen = document.getElementById('select_screen');
 
     var radio_units = document.getElementById('radio_units');
@@ -313,8 +333,10 @@
     var options = {
       'gps': gps.checked,
       'input_city': input_city.value,
+        'input_api': input_api.value,
       'select_utc': select_utc.value,
       'select_goal': select_goal.value,
+      'select_provider': select_provider.value,
       'select_screen': select_screen.value,
       'radio_units': radio_units.checked,
       
@@ -341,8 +363,10 @@
     // Save for next launch
     localStorage['gps'] = options['gps'];
     localStorage['input_city'] = options['input_city'];
+     localStorage['input_api'] = options['input_api'];
     localStorage['select_utc'] = options['select_utc'];
     localStorage['select_goal'] = options['select_goal'];
+      localStorage['select_provider'] = options['select_provider'];
     localStorage['select_screen'] = options['select_screen'];
     localStorage['radio_units'] = options['radio_units'];
     localStorage['radio_refresh'] = options['radio_refresh'];
@@ -387,8 +411,10 @@
   (function() {
     var gps = document.getElementById('gps');
     var input_city = document.getElementById('input_city');
+        var input_api = document.getElementById('input_api');
     var select_utc = document.getElementById('select_utc');
     var select_goal = document.getElementById('select_goal');
+    var select_provider = document.getElementById('select_provider');
     var select_screen = document.getElementById('select_screen');
     var radio_units = document.getElementById('radio_units');
     var radio_refresh = document.getElementById('radio_refresh');
@@ -408,8 +434,10 @@
     
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
+        input_api.value =  localStorage['input_api'];
     select_utc.value =  JSON.parse(localStorage['select_utc']);
     select_goal.value =  JSON.parse(localStorage['select_goal']);
+    select_provider.value =  JSON.parse(localStorage['select_provider']);
     select_screen.value =  JSON.parse(localStorage['select_screen']);
     radio_units.checked =  JSON.parse(localStorage['radio_units']);
     toggle_centered.checked =  JSON.parse(localStorage['toggle_centered']);
