@@ -164,8 +164,12 @@ Your weather provider choice:
     <div class='item-container-footer'>
       Classic Vs Squared fonts
     </div>
-  
-  
+    
+      <label class='item'>
+    Bluetooth disconnection vibration 
+      <input type='checkbox' class='item-toggle' input id='toggle_bt'>
+    </label>
+   
     <label class='item'>
       Hourly vibrations
       <input type='checkbox' class='item-toggle' input id='toggle_vibration'>
@@ -327,6 +331,7 @@ Your weather provider choice:
 
     var toggle_vibration = document.getElementById('toggle_vibration');
     var toggle_fonts = document.getElementById('toggle_fonts');
+     var toggle_bt = document.getElementById('toggle_bt');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
@@ -356,6 +361,7 @@ Your weather provider choice:
 
       'toggle_vibration': toggle_vibration.checked,
       'toggle_fonts': toggle_fonts.checked,
+      'toggle_bt': toggle_bt.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
       'toggle_gradiant': toggle_gradiant.checked,
 
@@ -384,6 +390,7 @@ Your weather provider choice:
     localStorage['radio_refresh'] = options['radio_refresh'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
       localStorage['toggle_fonts'] = options['toggle_fonts'];
+        localStorage['toggle_bt'] = options['toggle_bt'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
     localStorage['toggle_centered'] = options['toggle_centered'];
@@ -433,6 +440,7 @@ Your weather provider choice:
     var radio_refresh = document.getElementById('radio_refresh');
     var toggle_vibration = document.getElementById('toggle_vibration');
         var toggle_fonts = document.getElementById('toggle_fonts');
+        var toggle_bt = document.getElementById('toggle_bt');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
@@ -458,6 +466,7 @@ Your weather provider choice:
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
      toggle_fonts.checked =  JSON.parse(localStorage['toggle_fonts']);
+      toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
     toggle_gradiant.checked =  JSON.parse(localStorage['toggle_gradiant']);
     color_right_back.value =  localStorage['color_right_back'];
