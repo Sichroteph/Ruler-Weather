@@ -158,7 +158,7 @@ Your weather provider choice:
      
     <label class='item'>
       Fonts  
-      <select input id='toggle_fonts' dir='rtl' class='item-select'>
+      <select input id='select_fonts' dir='rtl' class='item-select'>
             <option class='item-select-option'>0</option>
             <option class='item-select-option' selected>1</option>
             <option class='item-select-option'>2</option>
@@ -334,8 +334,8 @@ Your weather provider choice:
     var radio_refresh = document.getElementById('radio_refresh');
 
     var toggle_vibration = document.getElementById('toggle_vibration');
-    var toggle_fonts = document.getElementById('toggle_fonts');
-     var toggle_bt = document.getElementById('toggle_bt');
+    var select_fonts = document.getElementById('select_fonts');
+    var toggle_bt = document.getElementById('toggle_bt');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
@@ -364,7 +364,7 @@ Your weather provider choice:
       'radio_screen': radio_refresh.checked,
 
       'toggle_vibration': toggle_vibration.checked,
-      'toggle_fonts': toggle_fonts.value,
+      'select_fonts': select_fonts.value,
       'toggle_bt': toggle_bt.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
       'toggle_gradiant': toggle_gradiant.checked,
@@ -393,7 +393,7 @@ Your weather provider choice:
     localStorage['radio_units'] = options['radio_units'];
     localStorage['radio_refresh'] = options['radio_refresh'];
     localStorage['toggle_vibration'] = options['toggle_vibration'];
-      localStorage['toggle_fonts'] = options['toggle_fonts'];
+      localStorage['select_fonts'] = options['select_fonts'];
         localStorage['toggle_bt'] = options['toggle_bt'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
@@ -443,7 +443,7 @@ Your weather provider choice:
     var radio_units = document.getElementById('radio_units');
     var radio_refresh = document.getElementById('radio_refresh');
     var toggle_vibration = document.getElementById('toggle_vibration');
-        var toggle_fonts = document.getElementById('toggle_fonts');
+        var select_fonts = document.getElementById('select_fonts');
         var toggle_bt = document.getElementById('toggle_bt');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
@@ -469,8 +469,8 @@ Your weather provider choice:
     toggle_centered.checked =  JSON.parse(localStorage['toggle_centered']);
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
-     toggle_fonts.value =  JSON.parse(localStorage['toggle_fonts']);
-      toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
+    select_fonts.value =  JSON.parse(localStorage['select_fonts']);
+    toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
     toggle_gradiant.checked =  JSON.parse(localStorage['toggle_gradiant']);
     color_right_back.value =  localStorage['color_right_back'];
