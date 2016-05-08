@@ -152,17 +152,21 @@ Your weather provider choice:
   </div>
   </div>
 
-
 <div class='item-container'>
   <div class='item-container-header'>Others</div>
   <div class='item-container-content'>
      
-      <label class='item'>
-      Classic fonts
-      <input type='checkbox' class='item-toggle' input id='toggle_fonts'>
+    <label class='item'>
+      Fonts
+      <select input id='toggle_fonts' dir='rtl' class='item-select'>
+            <option class='item-select-option'>0</option>
+            <option class='item-select-option' selected>1</option>
+            <option class='item-select-option'>2</option>
+      </select>
     </label>
+    
     <div class='item-container-footer'>
-      Classic Vs Squared fonts
+      0: Clearview fonts - 1: Squared fonts - 2: Leco fonts 
     </div>
     
       <label class='item'>
@@ -242,7 +246,7 @@ Your weather provider choice:
     </label>
     <div class='item-container-footer'>
    Mode 1: Deactivated  <br>
-   Mode 2: One shake to show <br>
+   Mode 2: One shake to show (Can be battery consuming)) <br>
    Mode 3: Two shakes to show
   </div>
     </div>
@@ -360,7 +364,7 @@ Your weather provider choice:
       'radio_screen': radio_refresh.checked,
 
       'toggle_vibration': toggle_vibration.checked,
-      'toggle_fonts': toggle_fonts.checked,
+      'toggle_fonts': toggle_fonts.value,
       'toggle_bt': toggle_bt.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
       'toggle_gradiant': toggle_gradiant.checked,
@@ -465,7 +469,7 @@ Your weather provider choice:
     toggle_centered.checked =  JSON.parse(localStorage['toggle_centered']);
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
-     toggle_fonts.checked =  JSON.parse(localStorage['toggle_fonts']);
+     toggle_fonts.value =  JSON.parse(localStorage['toggle_fonts']);
       toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
     toggle_gradiant.checked =  JSON.parse(localStorage['toggle_gradiant']);
