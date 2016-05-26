@@ -211,6 +211,14 @@ Your weather provider choice:
    By default, the hours are centered on the beginning
   </div>
 
+      <label class='item'>
+      Display month before week day
+      <input type='checkbox' class='item-toggle'  input id='toggle_month' >
+    </label>
+      <div class='item-container-footer'>
+   Checked: May 26 Thu -- Unchecked: Thu 26 May
+  </div>
+
   </div>
   </div>
 
@@ -350,6 +358,7 @@ Your weather provider choice:
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
+    var toggle_month = document.getElementById('toggle_month');
 
 
     var options = {
@@ -381,6 +390,7 @@ Your weather provider choice:
        'color_2nd_temp': color_2nd_temp.value,
        'toggle_ruler_large': toggle_ruler_large.checked,
        'toggle_centered': toggle_centered.checked,
+         'toggle_month': toggle_month.checked,
       
     };
 
@@ -400,6 +410,7 @@ Your weather provider choice:
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
     localStorage['toggle_centered'] = options['toggle_centered'];
+    localStorage['toggle_month'] = options['toggle_month'];
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
@@ -459,7 +470,7 @@ Your weather provider choice:
     var color_2nd_temp = document.getElementById('color_2nd_temp');
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
-    
+      var toggle_month = document.getElementById('toggle_month');  
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value =  localStorage['input_city'];
         input_api.value =  localStorage['input_api'];
@@ -469,6 +480,7 @@ Your weather provider choice:
     select_screen.value =  JSON.parse(localStorage['select_screen']);
     radio_units.checked =  JSON.parse(localStorage['radio_units']);
     toggle_centered.checked =  JSON.parse(localStorage['toggle_centered']);
+        toggle_month.checked =  JSON.parse(localStorage['toggle_month']);
     radio_refresh.checked =  JSON.parse(localStorage['radio_refresh']);
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
     select_fonts.value =  JSON.parse(localStorage['select_fonts']);
