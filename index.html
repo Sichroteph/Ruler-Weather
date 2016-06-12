@@ -219,8 +219,19 @@ Your weather provider choice:
       <input type='checkbox' class='item-toggle'  input id='toggle_centered' >
     </label>
       <div class='item-container-footer'>
-   By default, the hours are centered on the beginning
+   	
+By default, the hours are centered on the beginning
   </div>
+
+    <label class='item'>
+      Inverse the ruler movement
+      <input type='checkbox' class='item-toggle'  input id='toggle_inv' >
+    </label>
+      <div class='item-container-footer'>
+   By default the ruler is going up
+  </div>
+
+
 
       <label class='item'>
       Display month before week day
@@ -397,6 +408,7 @@ Your weather provider choice:
     var toggle_vibration = document.getElementById('toggle_vibration');
     var select_fonts = document.getElementById('select_fonts');
     var toggle_bt = document.getElementById('toggle_bt');
+ var toggle_inv = document.getElementById('toggle_inv');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
@@ -431,6 +443,7 @@ Your weather provider choice:
       'toggle_vibration': toggle_vibration.checked,
       'select_fonts': select_fonts.value,
       'toggle_bt': toggle_bt.checked,
+ 'toggle_inv': toggle_inv.checked,
 'toggle_100': toggle_100.checked,
 'toggle_80': toggle_80.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
@@ -463,6 +476,7 @@ Your weather provider choice:
     localStorage['toggle_vibration'] = options['toggle_vibration'];
       localStorage['select_fonts'] = options['select_fonts'];
         localStorage['toggle_bt'] = options['toggle_bt'];
+ localStorage['toggle_inv'] = options['toggle_inv'];
  localStorage['toggle_100'] = options['toggle_100'];
  localStorage['toggle_80'] = options['toggle_80'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
@@ -516,6 +530,7 @@ Your weather provider choice:
     var toggle_vibration = document.getElementById('toggle_vibration');
         var select_fonts = document.getElementById('select_fonts');
         var toggle_bt = document.getElementById('toggle_bt');
+ var toggle_inv = document.getElementById('toggle_inv');
   var toggle_100 = document.getElementById('toggle_100');
   var toggle_80 = document.getElementById('toggle_80');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
@@ -545,6 +560,7 @@ Your weather provider choice:
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
     select_fonts.value =  JSON.parse(localStorage['select_fonts']);
     toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
+toggle_inv.checked =  JSON.parse(localStorage['toggle_inv']);
  toggle_100.checked =  JSON.parse(localStorage['toggle_100']);
  toggle_80.checked =  JSON.parse(localStorage['toggle_80']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
