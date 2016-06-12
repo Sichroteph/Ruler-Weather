@@ -252,7 +252,7 @@ Your weather provider choice:
 
 
 
-    <div class='item-container'>
+ <div class='item-container'>
   <div class='item-container-header'>Weather 12H forecast graph</div>
   <div class='item-container-content'>
      <label class='item'>
@@ -270,6 +270,32 @@ Your weather provider choice:
   </div>
     </div>
 </div>
+
+
+ <div class='item-container'>
+  <div class='item-container-header'>Phone battery management</div>
+ <div class='item-container-content'>
+
+
+ <label class='item'>
+      Notification when the phone reach 100%
+      <input type='checkbox' class='item-toggle'  input id='toggle_100' >
+    </label>
+
+ <label class='item'>
+      Vibrate when the phone reach 20% or 80%
+      <input type='checkbox' class='item-toggle'  input id='toggle_80' >
+    </label>
+
+
+  <div class='item-container-footer'>
+      More information to make your lithium battery last longer  
+      <a href='http://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan'>here</a>
+
+ </div>
+ </div>
+</div>
+
 
 
 <div class='item-container'>
@@ -340,6 +366,11 @@ Your weather provider choice:
 		- Added phone/watch charging notification<br>
 		- Min/max inversion<br>
 		- Bluetooth icon <br>
+    - Notification if :   <br>
+      Phone is not charging and goes below 20%  <br>
+      Phone is charging and is at 80%      <br>
+      More information to make your lithium battery last longer  
+      <a href='http://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan'>here</a>
         
   
     </div>
@@ -379,6 +410,9 @@ Your weather provider choice:
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
     var toggle_month = document.getElementById('toggle_month');
+    var toggle_100 = document.getElementById('toggle_100');
+    var toggle_80 = document.getElementById('toggle_80');
+
 
 
     var options = {
@@ -397,6 +431,8 @@ Your weather provider choice:
       'toggle_vibration': toggle_vibration.checked,
       'select_fonts': select_fonts.value,
       'toggle_bt': toggle_bt.checked,
+'toggle_100': toggle_100.checked,
+'toggle_80': toggle_80.checked,
       'toggle_bw_icons': toggle_bw_icons.checked,
       'toggle_gradiant': toggle_gradiant.checked,
 
@@ -427,6 +463,8 @@ Your weather provider choice:
     localStorage['toggle_vibration'] = options['toggle_vibration'];
       localStorage['select_fonts'] = options['select_fonts'];
         localStorage['toggle_bt'] = options['toggle_bt'];
+ localStorage['toggle_100'] = options['toggle_100'];
+ localStorage['toggle_80'] = options['toggle_80'];
     localStorage['toggle_bw_icons'] = options['toggle_bw_icons'];
     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
     localStorage['toggle_centered'] = options['toggle_centered'];
@@ -478,6 +516,8 @@ Your weather provider choice:
     var toggle_vibration = document.getElementById('toggle_vibration');
         var select_fonts = document.getElementById('select_fonts');
         var toggle_bt = document.getElementById('toggle_bt');
+  var toggle_100 = document.getElementById('toggle_100');
+  var toggle_80 = document.getElementById('toggle_80');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
     var toggle_gradiant = document.getElementById('toggle_gradiant');
     var color_right_back = document.getElementById('color_right_back');
@@ -505,6 +545,8 @@ Your weather provider choice:
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
     select_fonts.value =  JSON.parse(localStorage['select_fonts']);
     toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
+ toggle_100.checked =  JSON.parse(localStorage['toggle_100']);
+ toggle_80.checked =  JSON.parse(localStorage['toggle_80']);
     toggle_bw_icons.checked =  JSON.parse(localStorage['toggle_bw_icons']);
     toggle_gradiant.checked =  JSON.parse(localStorage['toggle_gradiant']);
     color_right_back.value =  localStorage['color_right_back'];
