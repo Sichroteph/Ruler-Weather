@@ -312,6 +312,11 @@ By default, the hours are centered on the beginning
       Battery < 20% or > 80% vibration
       <input type='checkbox' class='item-toggle'  input id='toggle_80' >
     </label>
+	
+	 <label class='item'>
+      Vibrate when the phone is charging
+      <input type='checkbox' class='item-toggle'  input id='toggle_pc' >
+    </label>
 
 
   <div class='item-container-footer'>
@@ -371,7 +376,8 @@ By default, the hours are centered on the beginning
 <div class='item-container-footer'>
 		LAST NEWS<br>
 		(14th of june)<br>
-		- Weather freeze fix
+		- Weather freeze fix<br>
+		- Phone charging vibration option<br>
 		(13th of june)<br>
 		- Invertion of the screens option<br>
 		(12th of june)<br>
@@ -431,6 +437,7 @@ By default, the hours are centered on the beginning
     var toggle_vibration = document.getElementById('toggle_vibration');
     var select_fonts = document.getElementById('select_fonts');
     var toggle_bt = document.getElementById('toggle_bt');
+	 var toggle_pc = document.getElementById('toggle_pc');
 var toggle_tg = document.getElementById('toggle_tg');
  var toggle_inv = document.getElementById('toggle_inv');
     var toggle_bw_icons = document.getElementById('toggle_bw_icons');
@@ -467,6 +474,7 @@ var toggle_tg = document.getElementById('toggle_tg');
       'toggle_vibration': toggle_vibration.checked,
       'select_fonts': select_fonts.value,
       'toggle_bt': toggle_bt.checked,
+	   'toggle_pc': toggle_pc.checked,
 'toggle_tg': toggle_tg.checked,
  'toggle_inv': toggle_inv.checked,
 'toggle_100': toggle_100.checked,
@@ -501,6 +509,7 @@ var toggle_tg = document.getElementById('toggle_tg');
     localStorage['toggle_vibration'] = options['toggle_vibration'];
       localStorage['select_fonts'] = options['select_fonts'];
         localStorage['toggle_bt'] = options['toggle_bt'];
+		localStorage['toggle_pc'] = options['toggle_pc'];
 		 localStorage['toggle_tg'] = options['toggle_tg'];
  localStorage['toggle_inv'] = options['toggle_inv'];
  localStorage['toggle_100'] = options['toggle_100'];
@@ -556,7 +565,8 @@ var toggle_tg = document.getElementById('toggle_tg');
     var toggle_vibration = document.getElementById('toggle_vibration');
         var select_fonts = document.getElementById('select_fonts');
         var toggle_bt = document.getElementById('toggle_bt');
-		 var toggle_tg = document.getElementById('toggle_tg');
+   var toggle_pc = document.getElementById('toggle_pc');
+		var toggle_tg = document.getElementById('toggle_tg');
  var toggle_inv = document.getElementById('toggle_inv');
   var toggle_100 = document.getElementById('toggle_100');
   var toggle_80 = document.getElementById('toggle_80');
@@ -587,6 +597,7 @@ var toggle_tg = document.getElementById('toggle_tg');
     toggle_vibration.checked =  JSON.parse(localStorage['toggle_vibration']);
     select_fonts.value =  JSON.parse(localStorage['select_fonts']);
     toggle_bt.checked =  JSON.parse(localStorage['toggle_bt']);
+	toggle_pc.checked =  JSON.parse(localStorage['toggle_pc']);
 	   toggle_tg.checked =  JSON.parse(localStorage['toggle_tg']);
 toggle_inv.checked =  JSON.parse(localStorage['toggle_inv']);
  toggle_100.checked =  JSON.parse(localStorage['toggle_100']);
