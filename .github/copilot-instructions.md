@@ -1,0 +1,1 @@
+À chaque nouvelle demande de l'utilisateur, nettoie le code (pebble clean), compile-le et essaye de l'envoyer vers la montre qui est par défaut au 192.168.1.170
