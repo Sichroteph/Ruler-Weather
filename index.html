@@ -257,6 +257,14 @@
         </div>
       </div>
 
+      <label class='item'>
+        Classic view
+        <input type='checkbox' class='item-toggle' input id='toggle_classic'>
+      </label>
+      <div class='item-container-footer'>
+        Affiche tmin/tmax séparément autour de l'icône météo, avec une vue épurée
+      </div>
+
     </div>
   </div>
 
@@ -448,6 +456,7 @@
     var toggle_month = document.getElementById('toggle_month');
     var toggle_100 = document.getElementById('toggle_100');
     var toggle_80 = document.getElementById('toggle_80');
+    var toggle_classic = document.getElementById('toggle_classic');
 
 
 
@@ -486,6 +495,7 @@
       'toggle_ruler_large': toggle_ruler_large.checked,
       'toggle_centered': toggle_centered.checked,
       'toggle_month': toggle_month.checked,
+      'toggle_classic': toggle_classic.checked,
 
     };
 
@@ -511,6 +521,7 @@
     localStorage['toggle_gradiant'] = options['toggle_gradiant'];
     localStorage['toggle_centered'] = options['toggle_centered'];
     localStorage['toggle_month'] = options['toggle_month'];
+    localStorage['toggle_classic'] = options['toggle_classic'];
     localStorage['color_right_back'] = options['color_right_back'];
     localStorage['color_left_back'] = options['color_left_back'];
     localStorage['color_hours'] = options['color_hours'];
@@ -576,6 +587,7 @@
     var toggle_ruler_large = document.getElementById('toggle_ruler_large');
     var toggle_centered = document.getElementById('toggle_centered');
     var toggle_month = document.getElementById('toggle_month');
+    var toggle_classic = document.getElementById('toggle_classic');
     gps.checked = JSON.parse(localStorage['gps']);
     input_city.value = localStorage['input_city'];
     input_api.value = localStorage['input_api'];
@@ -606,7 +618,8 @@
     color_2nd_back.value = localStorage['color_2nd_back'];
     color_2nd_temp.value = localStorage['color_2nd_temp'];
     toggle_ruler_large.checked = JSON.parse(localStorage['toggle_ruler_large']);
-
+    if (localStorage['toggle_classic'] !== undefined)
+      toggle_classic.checked = JSON.parse(localStorage['toggle_classic']);
 
 
   })();
