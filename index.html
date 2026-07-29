@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ruler Weather</title>
+  <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+  <script src='js/slate.min.js'></script>
+  <style>
+    .title {
+      padding: 15px 10px;
+      text-transform: uppercase;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1.2em;
+      font-weight: 500;
+      color: #888888;
+      text-align: center;
+    }
+    .section-toggle {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-toggle::after {
+      content: '▼';
+      font-size: 0.75em;
+      color: #aaa;
+      transition: transform 0.2s;
+    }
+    .section-toggle.collapsed::after {
+      transform: rotate(-90deg);
+    }
+    .collapsible-content.hidden {
+      display: none;
+    }
+    .steel-badge {
+      display: inline-block;
+      background: #7a5c00;
+      color: #ffd;
+      font-size: 0.7em;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class='title'>Ruler Weather</h1>
+
+  <!-- ═══════════════════════════════ DISPLAY ═══════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Display</div>
+    <div class='item-container-content collapsible-content'>
+
+      <label class='item'>
+        Classic view
+        <input type='checkbox' class='item-toggle' id='toggle_classic'>
+      </label>
+      <div class='item-container-footer'>
+        Shows tmin/tmax separately around the weather icon, with a clean layout
+      </div>
+
+      <label class='item'>
+        Hours numbers mid-centered
+        <input type='checkbox' class='item-toggle' id='toggle_centered'>
+      </label>
+
+      <label class='item'>
+        Inverse the ruler movement
+        <input type='checkbox' class='item-toggle' id='toggle_inv'>
+      </label>
+
+      <label class='item'>
+        Larger ruler
+        <input type='checkbox' class='item-toggle' id='toggle_ruler_large' checked>
+      </label>
+
+      <label class='item'>
+        Display month before week day
+        <input type='checkbox' class='item-toggle' id='toggle_month'>
+      </label>
+      <div class='item-container-footer'>
+        Checked: May 26 Thu — Unchecked: Thu 26 May
+      </div>
+
+      <label class='item'>
+        Fonts
+        <select id='select_fonts' dir='rtl' class='item-select'>
+          <option class='item-select-option' selected>0</option>
+          <option class='item-select-option'>1</option>
+          <option class='item-select-option'>2</option>
+        </select>
+      </label>
+      <div class='item-container-footer'>
+        0: Squared — 1: Clearview — 2: Leco
+      </div>
+
+      <label class='item'>
+        White icons
+        <input type='checkbox' class='item-toggle' id='toggle_bw_icons'>
+      </label>
+      <div class='item-container-footer'>
+        Only applies to Pebble Time
+      </div>
+
+      <label class='item'>
+        Gradient overlay
+        <input type='checkbox' class='item-toggle' id='toggle_gradiant'>
+      </label>
+      <div class='item-container-footer'>
+        Does not apply to Pebble Round
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ PEBBLE STEEL ════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>
+      Pebble Steel <span class='steel-badge'>Steel only</span>
+    </div>
+    <div class='item-container-content collapsible-content'>
+
+      <label class='item'>
+        Adjust display for Steel bezel
+        <input type='checkbox' class='item-toggle' id='toggle_steel_offset' checked>
+      </label>
+      <div class='item-container-footer'>
+        Shifts all content down to visually align with the center button,
+        compensating for the screen being physically offset upward in the case.
+        Disable to use the full screen without any offset.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════ COLORS ═══════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Colors</div>
+    <div class='item-container-content collapsible-content'>
+
+      <div class='item-container-footer'>
+        Does not apply to OG Pebble (black &amp; white only)
+      </div>
+
+      <label class='item'>
+        Left panel background
+        <input type='text' class='item-color item-color-normal' id='color_left_back' value='0x000000'>
+      </label>
+      <label class='item'>
+        Left panel text (temperatures)
+        <input type='text' class='item-color item-color-normal' id='color_temperatures' value='0xFFFFFF'>
+      </label>
+      <label class='item'>
+        Right panel background
+        <input type='text' class='item-color item-color-normal' id='color_right_back' value='0x000000'>
+      </label>
+      <label class='item'>
+        Hours color
+        <input type='text' class='item-color item-color-normal' id='color_hours' value='0xFFFFFF'>
+      </label>
+      <label class='item'>
+        Ruler color
+        <input type='text' class='item-color item-color-normal' id='color_ruler' value='0xFFFFFF'>
+      </label>
+      <label class='item'>
+        Central line color
+        <input type='text' class='item-color item-color-normal' id='color_line' value='0xFFFFFF'>
+      </label>
+
+      <!-- Hidden: second screen colors kept for backward compatibility -->
+      <div style="display:none;">
+        <label class='item'>
+          2nd screen background
+          <input type='text' class='item-color item-color-normal' id='color_2nd_back' value='0x000000'>
+        </label>
+        <label class='item'>
+          2nd screen text
+          <input type='text' class='item-color item-color-normal' id='color_2nd_temp' value='0xFFFFFF'>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════ WEATHER ═══════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Weather</div>
+    <div class='item-container-content collapsible-content'>
+
+      <div class='item-container-footer'>
+        Powered by Open-Meteo (Météo-France AROME) — no API key needed
+      </div>
+
+      <label class='item'>
+        Use GPS
+        <input id='gps' type='checkbox' class='item-toggle'>
+      </label>
+
+      <label class='item'>
+        Imperial units
+        <input type='radio' class='item-radio' name='radio1' id='radio_units' value='a'>
+      </label>
+      <label class='item'>
+        Metric units
+        <input type='radio' class='item-radio' name='radio1' id='radio_units' value='b' checked>
+      </label>
+
+      <label class='item'>
+        Update every 30 min
+        <input type='radio' class='item-radio' name='radio2' id='radio_refresh' value='a'>
+      </label>
+      <label class='item'>
+        Update every 60 min
+        <input type='radio' class='item-radio' name='radio2' id='radio_refresh' value='b' checked>
+      </label>
+
+      <!-- Hidden: legacy fields kept for backward compatibility -->
+      <div style="display:none;">
+        <label class='item'>
+          <div class='item-input-wrapper'>
+            <input type='text' class='item-input' id='input_city' placeholder='City, Country'>
+          </div>
+        </label>
+        <label class='item'>
+          Provider
+          <select id='select_provider' dir='rtl' class='item-select'>
+            <option class='item-select-option'>0</option>
+            <option class='item-select-option'>1</option>
+            <option class='item-select-option' selected>2</option>
+          </select>
+        </label>
+        <label class='item'>
+          <div class='item-input-wrapper'>
+            <input type='text' class='item-input' id='input_api' placeholder='API key'>
+          </div>
+        </label>
+        <label class='item'>
+          UTC offset
+          <select id='select_utc' dir='rtl' class='item-select'>
+            <option class='item-select-option'>-9</option>
+            <option class='item-select-option'>-8</option>
+            <option class='item-select-option'>-7</option>
+            <option class='item-select-option'>-6</option>
+            <option class='item-select-option'>-5</option>
+            <option class='item-select-option'>-4</option>
+            <option class='item-select-option'>-3</option>
+            <option class='item-select-option'>-2</option>
+            <option class='item-select-option'>-1</option>
+            <option class='item-select-option'>-0</option>
+            <option class='item-select-option' selected>1</option>
+            <option class='item-select-option'>2</option>
+            <option class='item-select-option'>3</option>
+            <option class='item-select-option'>4</option>
+            <option class='item-select-option'>5</option>
+            <option class='item-select-option'>6</option>
+            <option class='item-select-option'>7</option>
+            <option class='item-select-option'>8</option>
+            <option class='item-select-option'>9</option>
+            <option class='item-select-option'>10</option>
+            <option class='item-select-option'>11</option>
+            <option class='item-select-option'>12</option>
+          </select>
+        </label>
+        <label class='item'>
+          Screen mode
+          <select id='select_screen' dir='rtl' class='item-select'>
+            <option class='item-select-option'>1</option>
+            <option class='item-select-option' selected>2</option>
+            <option class='item-select-option'>3</option>
+          </select>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════ HEALTH ════════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Health</div>
+    <div class='item-container-content collapsible-content'>
+
+      <label class='item'>
+        Daily step goal
+        <select id='select_goal' dir='rtl' class='item-select'>
+          <option class='item-select-option'>12000</option>
+          <option class='item-select-option'>11000</option>
+          <option class='item-select-option'>10000</option>
+          <option class='item-select-option'>9000</option>
+          <option class='item-select-option'>8000</option>
+          <option class='item-select-option'>7000</option>
+          <option class='item-select-option'>6000</option>
+          <option class='item-select-option'>5000</option>
+          <option class='item-select-option'>4000</option>
+          <option class='item-select-option'>3000</option>
+          <option class='item-select-option'>2000</option>
+          <option class='item-select-option'>1000</option>
+          <option class='item-select-option' selected>0</option>
+        </select>
+      </label>
+      <div class='item-container-footer'>Set to 0 to deactivate</div>
+
+      <div class='item-container'>
+        <div class='item-container-content'>
+          <label class='item'>
+            <img src="Vx6vv7J.png" style="width:300px;height:133px;">
+          </label>
+        </div>
+      </div>
+
+      <!-- Hidden: tg toggle kept for backward compatibility -->
+      <div style="display:none;">
+        <label class='item'>
+          Time graph
+          <input type='checkbox' class='item-toggle' id='toggle_tg'>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ NOTIFICATIONS ════════════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Notifications</div>
+    <div class='item-container-content collapsible-content'>
+
+      <label class='item'>
+        Bluetooth disconnection vibration
+        <input type='checkbox' class='item-toggle' id='toggle_bt'>
+      </label>
+
+      <label class='item'>
+        Hourly vibrations
+        <input type='checkbox' class='item-toggle' id='toggle_vibration'>
+      </label>
+      <div class='item-container-footer'>Active from 10am to 10pm</div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════ PHONE BATTERY (ANDROID) ════════════════════ -->
+  <div class='item-container'>
+    <div class='item-container-header section-toggle' onclick='toggleSection(this)'>Phone Battery (Android only)</div>
+    <div class='item-container-content collapsible-content'>
+
+      <label class='item'>
+        Vibrate when battery reaches 100%
+        <input type='checkbox' class='item-toggle' id='toggle_100'>
+      </label>
+
+      <label class='item'>
+        Vibrate when battery below 20% or above 80%
+        <input type='checkbox' class='item-toggle' id='toggle_80'>
+      </label>
+
+      <label class='item'>
+        Vibrate when phone starts charging
+        <input type='checkbox' class='item-toggle' id='toggle_pc'>
+      </label>
+
+      <div class='item-container-footer'>
+        Helps extend lithium battery lifespan —
+        <a href='http://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan'>more info</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ SUBMIT ═══════════════════════════════ -->
+  <div class='item-container'>
+    <div class='button-container'>
+      <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+    </div>
+  </div>
+
+  <img src="explain.png" style="width:300px;height:133px;">
+  <img src="explain2.png" style="width:300px;height:133px;">
+
+  <div class='item-container-footer'>
+    If you enjoy this app, support it on
+    <a href='https://www.paypal.me/ChristopheJEANNETTE'>PayPal</a> — or just enjoy it for free!
+  </div>
+
+</body>
+
+<script>
+
+  function toggleSection(header) {
+    header.classList.toggle('collapsed');
+    var content = header.nextElementSibling;
+    content.classList.toggle('hidden');
+  }
+
+  function getConfigData() {
+    var gps                = document.getElementById('gps');
+    var input_city         = document.getElementById('input_city');
+    var input_api          = document.getElementById('input_api');
+    var select_utc         = document.getElementById('select_utc');
+    var select_goal        = document.getElementById('select_goal');
+    var select_provider    = document.getElementById('select_provider');
+    var select_screen      = document.getElementById('select_screen');
+    var radio_units        = document.getElementById('radio_units');
+    var radio_refresh      = document.getElementById('radio_refresh');
+    var toggle_vibration   = document.getElementById('toggle_vibration');
+    var select_fonts       = document.getElementById('select_fonts');
+    var toggle_bt          = document.getElementById('toggle_bt');
+    var toggle_pc          = document.getElementById('toggle_pc');
+    var toggle_tg          = document.getElementById('toggle_tg');
+    var toggle_inv         = document.getElementById('toggle_inv');
+    var toggle_bw_icons    = document.getElementById('toggle_bw_icons');
+    var toggle_gradiant    = document.getElementById('toggle_gradiant');
+    var toggle_steel_offset = document.getElementById('toggle_steel_offset');
+    var color_right_back   = document.getElementById('color_right_back');
+    var color_left_back    = document.getElementById('color_left_back');
+    var color_hours        = document.getElementById('color_hours');
+    var color_ruler        = document.getElementById('color_ruler');
+    var color_temperatures = document.getElementById('color_temperatures');
+    var color_line         = document.getElementById('color_line');
+    var color_2nd_back     = document.getElementById('color_2nd_back');
+    var color_2nd_temp     = document.getElementById('color_2nd_temp');
+    var toggle_ruler_large = document.getElementById('toggle_ruler_large');
+    var toggle_centered    = document.getElementById('toggle_centered');
+    var toggle_month       = document.getElementById('toggle_month');
+    var toggle_100         = document.getElementById('toggle_100');
+    var toggle_80          = document.getElementById('toggle_80');
+    var toggle_classic     = document.getElementById('toggle_classic');
+
+    var options = {
+      'gps':                gps.checked,
+      'input_city':         input_city.value,
+      'input_api':          input_api.value,
+      'select_utc':         select_utc.value,
+      'select_goal':        select_goal.value,
+      'select_provider':    select_provider.value,
+      'select_screen':      select_screen.value,
+      'radio_units':        radio_units.checked,
+      'radio_refresh':      radio_refresh.checked,
+      'radio_screen':       radio_refresh.checked,
+      'toggle_vibration':   toggle_vibration.checked,
+      'select_fonts':       select_fonts.value,
+      'toggle_bt':          toggle_bt.checked,
+      'toggle_pc':          toggle_pc.checked,
+      'toggle_tg':          toggle_tg.checked,
+      'toggle_inv':         toggle_inv.checked,
+      'toggle_100':         toggle_100.checked,
+      'toggle_80':          toggle_80.checked,
+      'toggle_bw_icons':    toggle_bw_icons.checked,
+      'toggle_gradiant':    toggle_gradiant.checked,
+      'toggle_steel_offset': toggle_steel_offset.checked,
+      'color_right_back':   color_right_back.value,
+      'color_left_back':    color_left_back.value,
+      'color_hours':        color_hours.value,
+      'color_ruler':        color_ruler.value,
+      'color_temperatures': color_temperatures.value,
+      'color_line':         color_line.value,
+      'color_2nd_back':     color_2nd_back.value,
+      'color_2nd_temp':     color_2nd_temp.value,
+      'toggle_ruler_large': toggle_ruler_large.checked,
+      'toggle_centered':    toggle_centered.checked,
+      'toggle_month':       toggle_month.checked,
+      'toggle_classic':     toggle_classic.checked,
+    };
+
+    Object.keys(options).forEach(function(k) {
+      localStorage.setItem(k, JSON.stringify(options[k]));
+    });
+    console.log('Got options: ' + JSON.stringify(options));
+    return options;
+  }
+
+  function getQueryParam(variable, defaultValue) {
+    var query = location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] === variable) { return decodeURIComponent(pair[1]); }
+    }
+    return defaultValue || false;
+  }
+
+  function getHashParam(variable, defaultValue) {
+    var hash = location.hash.substring(1);
+    var vars = hash.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] === variable) { return decodeURIComponent(pair[1]); }
+    }
+    return defaultValue || false;
+  }
+
+  document.getElementById('submit_button').addEventListener('click', function () {
+    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+  });
+
+  function getIncomingConfigData() {
+    var rawConfig = getHashParam('settings', false);
+    if (!rawConfig) return null;
+
+    try {
+      var configData = JSON.parse(rawConfig);
+      return configData && typeof configData === 'object' ? configData : null;
+    } catch (error) {
+      console.log('Unable to read incoming configuration: ' + error);
+      return null;
+    }
+  }
+
+  function getStoredFieldValue(id) {
+    var storedValue = localStorage.getItem(id);
+    if (storedValue === null) return undefined;
+
+    try {
+      return JSON.parse(storedValue);
+    } catch (error) {
+      return storedValue;
+    }
+  }
+
+  function applyFieldValue(id, value, checkboxes) {
+    var el = document.getElementById(id);
+    if (!el || value === undefined) return;
+
+    if (id === 'radio_units' || id === 'radio_refresh') {
+      var radioButtons = document.querySelectorAll('[id="' + id + '"]');
+      if (radioButtons.length >= 2) {
+        radioButtons[0].checked = !!value;
+        radioButtons[1].checked = !value;
+        return;
+      }
+    }
+
+    if (checkboxes.indexOf(id) !== -1) {
+      el.checked = !!value;
+    } else {
+      el.value = value;
+    }
+  }
+
+  (function () {
+    var checkboxes = [
+      'gps', 'radio_units', 'radio_refresh', 'toggle_vibration', 'toggle_bt',
+      'toggle_pc', 'toggle_tg', 'toggle_inv', 'toggle_100', 'toggle_80',
+      'toggle_bw_icons', 'toggle_gradiant', 'toggle_steel_offset',
+      'toggle_ruler_large', 'toggle_centered', 'toggle_month', 'toggle_classic'
+    ];
+    var fields = checkboxes.concat([
+      'input_city', 'input_api', 'select_utc', 'select_goal', 'select_provider',
+      'select_screen', 'select_fonts', 'color_right_back', 'color_left_back',
+      'color_hours', 'color_ruler', 'color_temperatures', 'color_line',
+      'color_2nd_back', 'color_2nd_temp'
+    ]);
+    var incomingConfig = getIncomingConfigData();
+
+    fields.forEach(function(id) {
+      var value;
+
+      if (incomingConfig &&
+          Object.prototype.hasOwnProperty.call(incomingConfig, id)) {
+        value = incomingConfig[id];
+      } else {
+        value = getStoredFieldValue(id);
+      }
+
+      applyFieldValue(id, value, checkboxes);
+    });
+
+    if ((!incomingConfig ||
+         !Object.prototype.hasOwnProperty.call(incomingConfig,
+                                               'toggle_steel_offset')) &&
+        localStorage.getItem('toggle_steel_offset') === null) {
+      document.getElementById('toggle_steel_offset').checked = true;
+    }
+  })();
+
+</script>
+
+</html>
