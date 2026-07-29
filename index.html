@@ -464,7 +464,9 @@
       'toggle_classic':     toggle_classic.checked,
     };
 
-    Object.keys(options).forEach(function(k) { localStorage[k] = options[k]; });
+    Object.keys(options).forEach(function(k) {
+      localStorage.setItem(k, JSON.stringify(options[k]));
+    });
     console.log('Got options: ' + JSON.stringify(options));
     return options;
   }
@@ -479,10 +481,64 @@
     return defaultValue || false;
   }
 
+  function getHashParam(variable, defaultValue) {
+    var hash = location.hash.substring(1);
+    var vars = hash.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] === variable) { return decodeURIComponent(pair[1]); }
+    }
+    return defaultValue || false;
+  }
+
   document.getElementById('submit_button').addEventListener('click', function () {
     var return_to = getQueryParam('return_to', 'pebblejs://close#');
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
+
+  function getIncomingConfigData() {
+    var rawConfig = getHashParam('settings', false);
+    if (!rawConfig) return null;
+
+    try {
+      var configData = JSON.parse(rawConfig);
+      return configData && typeof configData === 'object' ? configData : null;
+    } catch (error) {
+      console.log('Unable to read incoming configuration: ' + error);
+      return null;
+    }
+  }
+
+  function getStoredFieldValue(id) {
+    var storedValue = localStorage.getItem(id);
+    if (storedValue === null) return undefined;
+
+    try {
+      return JSON.parse(storedValue);
+    } catch (error) {
+      return storedValue;
+    }
+  }
+
+  function applyFieldValue(id, value, checkboxes) {
+    var el = document.getElementById(id);
+    if (!el || value === undefined) return;
+
+    if (id === 'radio_units' || id === 'radio_refresh') {
+      var radioButtons = document.querySelectorAll('[id="' + id + '"]');
+      if (radioButtons.length >= 2) {
+        radioButtons[0].checked = !!value;
+        radioButtons[1].checked = !value;
+        return;
+      }
+    }
+
+    if (checkboxes.indexOf(id) !== -1) {
+      el.checked = !!value;
+    } else {
+      el.value = value;
+    }
+  }
 
   (function () {
     var checkboxes = [
@@ -497,18 +553,25 @@
       'color_hours', 'color_ruler', 'color_temperatures', 'color_line',
       'color_2nd_back', 'color_2nd_temp'
     ]);
+    var incomingConfig = getIncomingConfigData();
 
     fields.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (!el || localStorage[id] === undefined) return;
-      try {
-        var val = JSON.parse(localStorage[id]);
-        if (checkboxes.indexOf(id) !== -1) { el.checked = val; }
-        else { el.value = val; }
-      } catch(e) { el.value = localStorage[id]; }
+      var value;
+
+      if (incomingConfig &&
+          Object.prototype.hasOwnProperty.call(incomingConfig, id)) {
+        value = incomingConfig[id];
+      } else {
+        value = getStoredFieldValue(id);
+      }
+
+      applyFieldValue(id, value, checkboxes);
     });
 
-    if (localStorage['toggle_steel_offset'] === undefined) {
+    if ((!incomingConfig ||
+         !Object.prototype.hasOwnProperty.call(incomingConfig,
+                                               'toggle_steel_offset')) &&
+        localStorage.getItem('toggle_steel_offset') === null) {
       document.getElementById('toggle_steel_offset').checked = true;
     }
   })();
